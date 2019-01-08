@@ -85,10 +85,11 @@ var Engine = (function (global) {
         updateEntities(dt);
         checkCollisions();
 
-        if (player.y <= 0) {
+        if (player.y <= -10) {
+            // user wins the game
             isGameActive = false;
             modalWindow.style.display = "block";
-            player.resetPosition();
+           
         }
     }
 
@@ -214,5 +215,7 @@ var Engine = (function (global) {
 
 function closeModal() {
     modalWindow.style.display = "none";
+    player.resetPosition();
     isGameActive = true;
+    
 }

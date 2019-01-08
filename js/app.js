@@ -85,8 +85,8 @@ Player.prototype.handleInput = function (keyCode) {
 
     if (this.x <= 0)
         this.x = 0;
-    if (this.y <= 0)
-        this.y = 0;
+    if (this.y <= -10)
+        this.y = -10;
     if (this.x >= usableAreaMaxX)
         this.x = usableAreaMaxX;
     if (this.y >= usableAreaMaxY)

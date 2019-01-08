@@ -18,12 +18,12 @@ body {
   
   
   .modal-content {
-    margin: 15% auto;
+    margin: 5% auto;
     border: 1px solid #888;
-    width: 10%; 
+    width: 15%; 
     padding-left:25px;
     padding-right:25px;
-    padding-top:25px;
+    padding-top:10px;
     padding-bottom:36px;
     align-items: center;
     background-color:#eeeeee;
