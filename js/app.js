@@ -9,6 +9,9 @@ const usableAreaMaxX = canvasWidth - playerIconWidth;
 const playerInitialX = 200;
 const playerInitialY = 370;
 
+// the value of pixels that the player moves in every arrow key press
+const playerMovePixels=80;
+
 
 // Enemies our player must avoid
 var Enemy = function (xCoord = 0, yCoord = 0, speedFactor = 5) {
@@ -68,19 +71,18 @@ Player.prototype.render = function () {
 };
 
 Player.prototype.handleInput = function (keyCode) {
-    const offset = 80;
 
     if (keyCode == 'left') {
-        this.x -= offset;
+        this.x -= playerMovePixels;
     }
     else if (keyCode == 'up') {
-        this.y -= offset;
+        this.y -= playerMovePixels;
     }
     else if (keyCode == 'right') {
-        this.x += offset;
+        this.x += playerMovePixels;
     }
     else if (keyCode == 'down') {
-        this.y += offset;
+        this.y += playerMovePixels;
     }
 
     if (this.x <= 0)
@@ -96,7 +98,6 @@ Player.prototype.handleInput = function (keyCode) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
 let allEnemies = [];
 const enemyCount = 3;
 for (let i = 0; i < enemyCount; i++) {
@@ -108,8 +109,6 @@ for (let i = 0; i < enemyCount; i++) {
 }
 
 var player = new Player(playerInitialX, playerInitialY);
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

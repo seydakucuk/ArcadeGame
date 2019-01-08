@@ -15,6 +15,8 @@
 
 var modalWindow = document.getElementById("myModal");
 var isGameActive = true;
+const collisionDeltaX = 30;
+const collisionDeltaY = 70;
 
 var Engine = (function (global) {
     /* Predefine the variables we'll be using within this scope,
@@ -89,25 +91,21 @@ var Engine = (function (global) {
             // user wins the game
             isGameActive = false;
             modalWindow.style.display = "block";
-           
         }
     }
 
 
-
     function checkCollisions() {
-        var playerX = player.x;
-        var playerY = player.y;
-        var deltaX = 30;
-        var deltaY = 70;
+        const playerX = player.x;
+        const playerY = player.y;
+     
         for (let enemy of allEnemies) {
             var enemyX = enemy.x;
             var enemyY = enemy.y;
-            if (Math.abs(enemyX - playerX) <= deltaX && Math.abs(enemyY - playerY) <= deltaY) {
+            if (Math.abs(enemyX - playerX) <= collisionDeltaX && Math.abs(enemyY - playerY) <= collisionDeltaY) {
                 player.resetPosition();
             }
         }
-
     }
 
     /* This is called by the update function and loops through all of the
@@ -213,6 +211,7 @@ var Engine = (function (global) {
 })(this);
 
 
+// closes congratulations modal window
 function closeModal() {
     modalWindow.style.display = "none";
     player.resetPosition();
